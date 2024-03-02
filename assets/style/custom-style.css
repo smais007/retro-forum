@@ -28,3 +28,7 @@
 .p-color {
     color: #12132D99;
 }
+
+.bg-footer {
+    background: linear-gradient(180deg, rgba(18, 19, 45, 0.05) 0%, rgba(18, 19, 45, 0.00) 100%);
+}
