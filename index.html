@@ -1,15 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="assets/style/custom-style.css">
+
+
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.2/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
     <title>Document</title>
 </head>
 
-<body>
+<body class="custom-container">
+    <header>
+        <nav class="flex justify-between items-center pt-12">
+            <div>
+                <h1 class="h1-color font-extrabold text-4xl">ReTro</h1>
+            </div>
+            <div class="flex gap-6">
+                <div class="flex gap-3">
+                    <button class="bg-[#12132D08] px-[18px] py-4 border rounded-full tooltip" data-tip="Home">
+                        <img src="assets/icon/home.svg" alt="">
+                    </button>
+                    <button class="bg-[#12132D08] px-[18px] py-4 border rounded-full tooltip" data-tip="Home">
+                        <img src="assets/icon/edit.svg" alt="">
+                    </button>
+                    <button class="bg-[#12132D08] px-[18px] py-4 border rounded-full tooltip" data-tip="Home">
+                        <img src="assets/icon/add.svg" alt="">
+                    </button>
+                    <button class="bg-[#12132D08] px-[18px] py-4 border rounded-full tooltip" data-tip="Home">
+                        <img src="assets/icon/flag.svg" alt="">
+                    </button>
+                </div>
+                <div>
+                    <button class="mulish text-xl font-bold py-[18px] px-10 bg-[#797DFC] rounded-[50px] text-white">Sign
+                        In</button>
+                </div>
+            </div>
+        </nav>
+    </header>
 
 </body>
 
