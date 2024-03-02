@@ -32,3 +32,40 @@
 .bg-footer {
     background: linear-gradient(180deg, rgba(18, 19, 45, 0.05) 0%, rgba(18, 19, 45, 0.00) 100%);
 }
+
+.section-title {
+    color: #12132D;
+    text-align: center;
+    font-family: Mulish;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: normal;
+    padding-bottom: 24px;
+}
+
+.section-subtitle {
+    color: rgba(18, 19, 45, 0.60);
+    text-align: center;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: Inter;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 30px;
+    width: 43.188rem;
+    margin: 0 auto;
+    /* 166.667% */
+}
+
+.active-status {
+    position: absolute;
+    top: -8%;
+    right: -8%;
+    width: 18.667px;
+    height: 18.667px;
+    flex-shrink: 0;
+    border-radius: 100px;
+    border: 2px solid #FFF;
+    background: #10B981;
+}
