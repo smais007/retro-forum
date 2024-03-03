@@ -8,6 +8,7 @@ const allPosts = async () => {
   const discussionPosts = document.getElementById("discussion-post");
 
   posts.forEach((post) => {
+    toggleLoadingSpinner(true);
     // console.log(post);
     const activeStatusStyle = post.isActive
       ? "background-color: #10B981;"
@@ -45,7 +46,7 @@ const allPosts = async () => {
               </div>
           </div>
           <div>
-          <button id="read-btn"><img src="assets/icon/read.svg" alt=""></button>
+          <button onclick="updateReadCount()" id="read-btn"><img src="assets/icon/read.svg" alt=""></button>
 
           </div>
       </div>
@@ -56,10 +57,13 @@ const allPosts = async () => {
     discussionCard.innerHTML = discussionPostsTemplate;
     discussionPosts.appendChild(discussionCard);
   });
+
+  toggleLoadingSpinner(false);
 };
 
 // Search by category
 const searchCategory = () => {
+  toggleLoadingSpinner(true);
   const searchField = document.getElementById("search-field");
   const searchText = searchField.value;
   console.log(searchText);
@@ -71,7 +75,7 @@ const searchPosts = async (searchText) => {
   const response = await fetch(url);
   const data = await response.json();
   const posts = data.posts;
-  console.log(posts);
+  // console.log(posts);
 
   const discussionPosts = document.getElementById("discussion-post");
   discussionPosts.innerHTML = "";
@@ -114,7 +118,7 @@ const searchPosts = async (searchText) => {
               </div>
           </div>
           <div>
-          <button id="read-btn"><img src="assets/icon/read.svg" alt=""></button>
+          <button  onclick="updateReadCount()" id="read-btn"><img src="assets/icon/read.svg" alt=""></button>
 
           </div>
       </div>
@@ -125,6 +129,7 @@ const searchPosts = async (searchText) => {
     discussionCard.innerHTML = discussionPostsTemplate;
     discussionPosts.appendChild(discussionCard);
   });
+  toggleLoadingSpinner(false);
 };
 
 searchPosts();
@@ -175,5 +180,15 @@ const latestPost = async () => {
     latestPostContainer.appendChild(postContainer);
   });
 };
-
 latestPost();
+
+//Loading Spinner
+const toggleLoadingSpinner = (loading) => {
+  const loadingSpinner = document.getElementById("loading-spinner");
+  if (loading) {
+    loadingSpinner.classList.remove("hidden");
+    setTimeout(() => {
+      loadingSpinner.classList.add("hidden");
+    }, 2000);
+  }
+};
