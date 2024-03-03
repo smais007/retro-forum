@@ -53,9 +53,9 @@
                     and wp forum
                     coffee mug!</p>
                 <div class="relative">
-                    <input type="text" value="" placeholder="Search here anything"
+                    <input id="search-field" type="text" value="" placeholder="Search here anything"
                         class="w-[25rem] rounded-[50px] p-[18px] ">
-                    <button
+                    <button onclick="searchCategory()"
                         class="mulish text-xl font-bold text-white  bg-[#797DFC] py-[5px] px-7 rounded-[46px] absolute  left-[270px] top-3">Search</button>
                 </div>
             </div>
@@ -99,7 +99,7 @@
                         <h1 class="h1-color font-bold text-xl mulish">Title</h1>
                         <div class="flex gap-2">
                             <img src="assets/icon/mark.svg" alt="">
-                            <p class="inter p-color">Mark as read (<span>2</span>)</p>
+                            <p class="inter p-color">Mark as read (<span id="read-count">0</span>)</p>
                         </div>
                     </div>
                     <div class="flex justify-center items-center bg-white rounded-2xl p-4">

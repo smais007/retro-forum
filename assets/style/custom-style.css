@@ -69,3 +69,15 @@
     border: 2px solid #FFF;
     background: #10B981;
 }
+
+.inactive-status {
+    position: absolute;
+    top: -8%;
+    right: -8%;
+    width: 18.667px;
+    height: 18.667px;
+    flex-shrink: 0;
+    border-radius: 100px;
+    border: 2px solid #FFF;
+    background: #FF3434;
+}
