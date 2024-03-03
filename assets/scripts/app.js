@@ -1,5 +1,3 @@
-let readCount = 0;
-
 const allPosts = async () => {
   const url = `https://openapi.programming-hero.com/api/retro-forum/posts`;
   const response = await fetch(url);
@@ -48,8 +46,9 @@ const allPosts = async () => {
               </div>
           </div>
           <div>
-          <button onclick="updateReadCount()"  id="read-btn"><img src="assets/icon/read.svg" alt=""></button>
-
+          <button onclick="updateReadCount('${post.title}', ${post.view_count})" id="read-btn">
+  <img src="assets/icon/read.svg" alt="">
+</button>
           </div>
       </div>
   </div>
@@ -120,8 +119,9 @@ const searchPosts = async (searchText) => {
               </div>
           </div>
           <div>
-          <button  onclick="updateReadCount()" id="read-btn"><img src="assets/icon/read.svg" alt=""></button>
-
+          <button onclick="updateReadCount('${post.title}', ${post.view_count})" id="read-btn">
+  <img src="assets/icon/read.svg" alt="">
+</button>
           </div>
       </div>
   </div>
@@ -196,3 +196,31 @@ const toggleLoadingSpinner = (loading) => {
 };
 
 // mark as read
+let count = 1;
+const updateReadCount = (postTitle, viewCount) => {
+  const readCount = document.getElementById("read-count");
+  readCount.innerHTML = count;
+  count++;
+
+  const markAsRead = document.getElementById("mark-as-read");
+  const title = document.createElement("p");
+  title.innerHTML = postTitle;
+  console.log(title.innerHTML);
+
+  const view = document.createElement("p");
+  view.innerHTML = viewCount;
+  console.log(view.innerHTML);
+
+  const readCard = `<div class="flex justify-center items-center bg-white rounded-2xl p-4 mb-4">
+  <p id="post-title" class="w-[13.25rem] mulish h1-color font-semibold leading-6">${title.innerHTML}</p>
+  <div class="flex justify-center items-center gap-2">
+      <img src="assets/icon/view.svg" alt="">
+      <p id="post-view">${view.innerHTML}</p>
+  </div>
+</div>`;
+
+  const readCardContainer = document.createElement("div");
+  readCardContainer.innerHTML = readCard;
+
+  markAsRead.appendChild(readCardContainer);
+};
