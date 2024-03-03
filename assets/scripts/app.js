@@ -1,3 +1,5 @@
+let readCount = 0;
+
 const allPosts = async () => {
   const url = `https://openapi.programming-hero.com/api/retro-forum/posts`;
   const response = await fetch(url);
@@ -46,7 +48,7 @@ const allPosts = async () => {
               </div>
           </div>
           <div>
-          <button onclick="updateReadCount()" id="read-btn"><img src="assets/icon/read.svg" alt=""></button>
+          <button onclick="updateReadCount()"  id="read-btn"><img src="assets/icon/read.svg" alt=""></button>
 
           </div>
       </div>
@@ -192,3 +194,5 @@ const toggleLoadingSpinner = (loading) => {
     }, 2000);
   }
 };
+
+// mark as read
