@@ -170,7 +170,7 @@ const searchPosts = async (searchText) => {
 };
 
 searchPosts();
-allPosts();
+// allPosts();
 
 // Latest posts
 const latestPost = async () => {
