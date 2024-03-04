@@ -1,3 +1,7 @@
+const stringTohtml = (str) => {
+  return str.replaceAll("'", "&apos;");
+};
+
 const allPosts = async () => {
   const url = `https://openapi.programming-hero.com/api/retro-forum/posts`;
   const response = await fetch(url);
@@ -8,6 +12,10 @@ const allPosts = async () => {
   const discussionPosts = document.getElementById("discussion-post");
 
   posts.forEach((post) => {
+    const ti = stringTohtml(post.title);
+
+    console.log(ti);
+
     toggleLoadingSpinner(true);
     // console.log(post);
     const activeStatusStyle = post.isActive
@@ -21,13 +29,19 @@ const allPosts = async () => {
   </div>
   <div>
       <div class="flex gap-5 pb-3">
-          <p class="inter text-sm font-medium  text-[#12132DCC]">#<span>${post.category}</span></p>
-          <p class="inter text-sm font-medium  text-[#12132DCC]">Author: <span>${post.author.name}</span></p>
+          <p class="inter text-sm font-medium  text-[#12132DCC]">#<span>${
+            post.category
+          }</span></p>
+          <p class="inter text-sm font-medium  text-[#12132DCC]">Author: <span>${
+            post.author.name
+          }</span></p>
       </div>
       <div>
           <h1 class="mulish font-bold text-xl h1-color pb-4">${post.title}
           </h1>
-          <p class="inter p-color text-base w-[35.563rem] leading-6 pb-5">${post.description}</p>
+          <p class="inter p-color text-base w-[35.563rem] leading-6 pb-5">${
+            post.description
+          }</p>
           <hr class="border-dotted">
       </div>
       <div class="flex justify-between items-center pt-5">
@@ -46,9 +60,12 @@ const allPosts = async () => {
               </div>
           </div>
           <div>
-          <button onclick="updateReadCount('${post.title}', ${post.view_count})" id="read-btn">
-  <img src="assets/icon/read.svg" alt="">
-</button>
+          <button onclick='updateReadCount(${JSON.stringify({
+            title: stringTohtml(post.title),
+            view_count: post.view_count,
+          })})' id="read-btn">
+              <img src="assets/icon/read.svg" alt="">
+          </button>
           </div>
       </div>
   </div>
@@ -61,7 +78,7 @@ const allPosts = async () => {
 
   toggleLoadingSpinner(false);
 };
-
+allPosts();
 // Search by category
 const searchCategory = () => {
   toggleLoadingSpinner(true);
@@ -69,6 +86,7 @@ const searchCategory = () => {
   const searchText = searchField.value;
   console.log(searchText);
   searchPosts(searchText);
+  searchField.value = "";
 };
 
 const searchPosts = async (searchText) => {
@@ -94,13 +112,19 @@ const searchPosts = async (searchText) => {
   </div>
   <div>
       <div class="flex gap-5 pb-3">
-          <p class="inter text-sm font-medium  text-[#12132DCC]">#<span>${post.category}</span></p>
-          <p class="inter text-sm font-medium  text-[#12132DCC]">Author: <span>${post.author.name}</span></p>
+          <p class="inter text-sm font-medium  text-[#12132DCC]">#<span>${
+            post.category
+          }</span></p>
+          <p class="inter text-sm font-medium  text-[#12132DCC]">Author: <span>${
+            post.author.name
+          }</span></p>
       </div>
       <div>
           <h1 class="mulish font-bold text-xl h1-color pb-4">${post.title}
           </h1>
-          <p class="inter p-color text-base w-[35.563rem] leading-6 pb-5">${post.description}</p>
+          <p class="inter p-color text-base w-[35.563rem] leading-6 pb-5">${
+            post.description
+          }</p>
           <hr class="border-dotted">
       </div>
       <div class="flex justify-between items-center pt-5">
@@ -119,9 +143,13 @@ const searchPosts = async (searchText) => {
               </div>
           </div>
           <div>
-          <button onclick="updateReadCount('${post.title}', ${post.view_count})" id="read-btn">
-  <img src="assets/icon/read.svg" alt="">
-</button>
+          <button onclick='updateReadCount(${JSON.stringify({
+            title: stringTohtml(post.title),
+            view_count: post.view_count,
+          })})' id="read-btn">
+          <img src="assets/icon/read.svg" alt="">
+          </button>
+
           </div>
       </div>
   </div>
@@ -197,30 +225,25 @@ const toggleLoadingSpinner = (loading) => {
 
 // mark as read
 let count = 1;
-const updateReadCount = (postTitle, viewCount) => {
+const updateReadCount = (obj) => {
   const readCount = document.getElementById("read-count");
   readCount.innerHTML = count;
   count++;
-
   const markAsRead = document.getElementById("mark-as-read");
   const title = document.createElement("p");
-  title.innerHTML = postTitle;
+  title.innerHTML = obj.title;
   console.log(title.innerHTML);
-
   const view = document.createElement("p");
-  view.innerHTML = viewCount;
+  view.innerHTML = obj.view_count;
   console.log(view.innerHTML);
-
   const readCard = `<div class="flex justify-center items-center bg-white rounded-2xl p-4 mb-4">
-  <p id="post-title" class="w-[13.25rem] mulish h1-color font-semibold leading-6">${title.innerHTML}</p>
-  <div class="flex justify-center items-center gap-2">
-      <img src="assets/icon/view.svg" alt="">
-      <p id="post-view">${view.innerHTML}</p>
-  </div>
-</div>`;
-
+    <p id="post-title" class="w-[13.25rem] mulish h1-color font-semibold leading-6">${title.innerHTML}</p>
+    <div class="flex justify-center items-center gap-2">
+        <img src="assets/icon/view.svg" alt="">
+        <p id="post-view">${view.innerHTML}</p>
+    </div>
+  </div>`;
   const readCardContainer = document.createElement("div");
   readCardContainer.innerHTML = readCard;
-
   markAsRead.appendChild(readCardContainer);
 };

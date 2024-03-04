@@ -53,7 +53,7 @@
   font-style: normal;
   font-weight: 400;
   line-height: 30px;
-  width: 43.188rem;
+  /* width: 43.188rem; */
   margin: 0 auto;
   /* 166.667% */
 }
@@ -145,3 +145,45 @@ hr {
 .ldio-japzwhp0h9j div {
   box-sizing: content-box;
 }
+
+
+.custom-container {
+  width: 73.125rem;
+  margin: 0 auto;
+}
+
+/* @media only screen and (max-width: 320px) {
+  .custom-container {
+    width: auto;
+  }
+}
+
+@media only screen and (min-width: 321px) and (max-width: 375px) {
+  .custom-container {
+    width: auto;
+  }
+}
+
+@media only screen and (min-width: 376px) and (max-width: 420px) {
+  .custom-container {
+    width: auto;
+  }
+}
+
+@media only screen and (min-width: 421px) and (max-width: 768px) {
+  .custom-container {
+    width: auto;
+  }
+}
+
+@media only screen and (min-width: 769px) and (max-width: 1080px) {
+  .custom-container {
+    width: auto;
+  }
+}
+
+@media only screen and (min-width: 1081px) {
+  .custom-container {
+    width: 73.125rem;
+  }
+} */
