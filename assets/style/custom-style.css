@@ -33,6 +33,18 @@
   background: linear-gradient(180deg, rgba(18, 19, 45, 0.05) 0%, rgba(18, 19, 45, 0.00) 100%);
 }
 
+.retro {
+  background: linear-gradient(90deg, #797DFC 0.63%, rgba(121, 125, 252, 0.00) 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: Mulish;
+  font-size: 64px;
+  font-style: normal;
+  font-weight: 900;
+  line-height: 86px;
+}
+
 .section-title {
   color: #12132D;
   text-align: center;
